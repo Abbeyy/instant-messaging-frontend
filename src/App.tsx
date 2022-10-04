@@ -7,7 +7,7 @@ const email = "example@email.com";
 export const App = () => {
   useEffect(() => {
     axios
-      .get(`${BACKEND}/currentUser/`, {
+      .get(`${BACKEND}/currentUser/getCurrentUser`, {
         params: {
           email,
         },
@@ -22,9 +22,9 @@ export const App = () => {
 
 // export const App = () => {
 //   useEffect(() => {
-//     axios.get(`${BACKEND}/currentUser/${email}`).then((resp) => {
-//       console.log("resp=", resp);
-//     });
+// axios.get(`${BACKEND}/currentUser/${email}`).then((resp) => {
+//   console.log("resp=", resp);
+// });
 //   }, []);
 
 //   return <div>Hello World!</div>;
