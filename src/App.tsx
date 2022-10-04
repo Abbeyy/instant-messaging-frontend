@@ -19,13 +19,3 @@ export const App = () => {
 
   return <div>Hello World!</div>;
 };
-
-// export const App = () => {
-//   useEffect(() => {
-// axios.get(`${BACKEND}/currentUser/${email}`).then((resp) => {
-//   console.log("resp=", resp);
-// });
-//   }, []);
-
-//   return <div>Hello World!</div>;
-// };
