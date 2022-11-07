@@ -1,3 +1,7 @@
 import { User } from "../../user";
 
-export type CurrentUserState = User | null
+export type CurrentUserState = {
+    user: User | null
+    error: string
+    fetching: boolean
+}
