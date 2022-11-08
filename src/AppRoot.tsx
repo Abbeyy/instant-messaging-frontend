@@ -61,7 +61,7 @@ const styles: StyleSheet = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    background: "#98BAFF",
+    background: "#20c994",
   },
   loadingText: {
     color: "white",

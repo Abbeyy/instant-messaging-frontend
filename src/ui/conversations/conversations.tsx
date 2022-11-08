@@ -28,4 +28,4 @@ const styles: StyleSheet = {
   },
 };
 
-// "#98BAFF"
+// "#20c994"

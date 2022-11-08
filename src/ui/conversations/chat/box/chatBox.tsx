@@ -14,7 +14,7 @@ export const ChatBox = () => (
     <Icon
       icon={ICON_NAME.SEND}
       color="#F4F4F4"
-      backgroundColor="#98BAFF"
+      backgroundColor="#20c994"
       borderRadius={25}
       padding={6}
       size={20}

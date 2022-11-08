@@ -24,7 +24,7 @@ type Props = {
 export const Icon = (props: Props) => {
   const {
     icon,
-    color = "#98BAFF",
+    color = "#20c994",
     backgroundColor = "white",
     shadowColor,
     borderRadius = 8,

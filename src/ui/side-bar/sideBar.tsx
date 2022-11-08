@@ -12,15 +12,15 @@ export const SideBar = () => {
     <div style={styles.sideBar}>
       <h1 style={styles.name}>{`Hi ${currentUser.firstName}`}</h1>
 
-      <Icon icon={ICON_NAME.HOUSE} shadowColor="#72a0fc" />
-      <Icon icon={ICON_NAME.MESSAGE} shadowColor="#72a0fc" />
+      <Icon icon={ICON_NAME.HOUSE} shadowColor="#189e74" />
+      <Icon icon={ICON_NAME.MESSAGE} shadowColor="#189e74" />
     </div>
   );
 };
 
 const styles: StyleSheet = {
   icon: {
-    color: "#98BAFF",
+    color: "#20c994",
     backgroundColor: "white",
     padding: 4,
     margin: 8,
@@ -41,7 +41,7 @@ const styles: StyleSheet = {
   sideBar: {
     flex: 1,
     display: "flex",
-    backgroundColor: "#98BAFF",
+    backgroundColor: "#20c994",
     flexDirection: "column",
     padding: 24,
     textAlign: "center",
