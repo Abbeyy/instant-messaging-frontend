@@ -31,8 +31,10 @@ const styles: StyleSheet = {
     width: 30,
     height: 30,
     borderRadius: 8,
+    boxShadow: "1px 3px 1px #6295fc",
   },
   iconRow: {
-    flex: 1,
+    flex: 0,
+    display: "flex",
   },
 };

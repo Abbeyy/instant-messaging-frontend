@@ -12,6 +12,7 @@ export const Chat = () => {
 const styles: StyleSheet = {
   chat: {
     flex: 4,
+    display: "flex",
     backgroundColor: "white",
     flexDirection: "column",
   },

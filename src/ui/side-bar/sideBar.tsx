@@ -30,6 +30,7 @@ const styles: StyleSheet = {
   },
   iconRow: {
     flex: 1,
+    display: "flex",
   },
   name: {
     color: "white",
@@ -39,9 +40,11 @@ const styles: StyleSheet = {
   },
   sideBar: {
     flex: 1,
+    display: "flex",
     backgroundColor: "#98BAFF",
     flexDirection: "column",
     padding: 24,
     textAlign: "center",
+    alignItems: "center",
   },
 };
