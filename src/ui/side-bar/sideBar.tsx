@@ -2,8 +2,8 @@ import { useAppSelector } from "../../hooks";
 import { currentUserSelector } from "../../redux/selectors/currentUserSelector";
 import React from "react";
 import { StyleSheet } from "../../types/style";
-import HouseIcon from "@mui/icons-material/House";
-import MessageIcon from "@mui/icons-material/Message";
+import { Icon } from "./icon";
+import { ICON_NAME } from "../../types/ui/icon";
 
 export const SideBar = () => {
   const currentUser = useAppSelector(currentUserSelector);
@@ -11,10 +11,9 @@ export const SideBar = () => {
   return (
     <div style={styles.sideBar}>
       <h1 style={styles.name}>{`Hi ${currentUser.firstName}`}</h1>
-      <div style={styles.iconRow}>
-        <HouseIcon style={styles.icon} />
-      </div>
-      <MessageIcon style={styles.icon} />
+
+      <Icon icon={ICON_NAME.HOUSE} />
+      <Icon icon={ICON_NAME.MESSAGE} />
     </div>
   );
 };
@@ -36,12 +35,13 @@ const styles: StyleSheet = {
     color: "white",
     fontSize: 20,
     letterSpacing: 0.6,
+    marginBottom: 12,
   },
   sideBar: {
-    flex: 1.5,
+    flex: 1,
     backgroundColor: "#98BAFF",
     flexDirection: "column",
-    padding: 8,
+    padding: 24,
     textAlign: "center",
   },
 };
