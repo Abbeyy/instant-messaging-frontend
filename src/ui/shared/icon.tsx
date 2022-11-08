@@ -89,8 +89,8 @@ export const Icon = (props: Props) => {
 const styles: StyleSheet = {
   active: {
     color: "white",
-    position: "absolute",
-    left: 20,
+    position: "relative",
+    left: 2,
   },
   iconRow: {
     flex: 0,
