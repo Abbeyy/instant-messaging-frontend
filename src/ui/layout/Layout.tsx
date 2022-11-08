@@ -1,14 +1,22 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { SideBar } from "./side-bar/sideBar";
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "../../types/style";
 
-export const Layout = () => (
-  <div style={styles.layout}>
-    <SideBar />
-    <Outlet />
-  </div>
-);
+export const Layout = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/messages");
+  }, []);
+
+  return (
+    <div style={styles.layout}>
+      <SideBar />
+      <Outlet />
+    </div>
+  );
+};
 
 const styles: StyleSheet = {
   layout: {

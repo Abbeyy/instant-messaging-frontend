@@ -12,8 +12,8 @@ export const SideBar = () => {
     <div style={styles.sideBar}>
       <h1 style={styles.name}>{`Hi ${currentUser.firstName}`}</h1>
 
-      <Icon icon={ICON_NAME.HOUSE} shadowColor="#189e74" />
       <Icon icon={ICON_NAME.MESSAGE} shadowColor="#189e74" />
+      <Icon icon={ICON_NAME.HOUSE} shadowColor="#189e74" />
     </div>
   );
 };

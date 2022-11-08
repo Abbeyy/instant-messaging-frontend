@@ -8,6 +8,7 @@ import { ICON_NAME } from "../../types/ui/icon";
 import React from "react";
 import { EmojiEmotions } from "@mui/icons-material";
 import SendToMobileIcon from "@mui/icons-material/SendToMobile";
+import BlurOnIcon from "@mui/icons-material/BlurOn";
 
 type Props = {
   icon: ICON_NAME;
@@ -18,6 +19,7 @@ type Props = {
   margin?: number;
   padding?: number;
   size?: number;
+  active?: boolean;
   onClick?: () => void;
 };
 
@@ -31,6 +33,7 @@ export const Icon = (props: Props) => {
     margin = 8,
     padding = 4,
     size = 30,
+    active = false,
     onClick,
   } = props;
 
@@ -77,6 +80,7 @@ export const Icon = (props: Props) => {
 
   return (
     <button style={styles.iconRow} onClick={handleOnPress}>
+      {active ? <BlurOnIcon style={{ color: "white" }} /> : null}
       {iconButton}
     </button>
   );

@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { CurrentUserState } from "../../types/redux/reducers/currentUserState"
+import { CurrentUserState, SIDEBAR_MENU_OPTION } from "../../types/redux/reducers/currentUserState"
 import { User } from "../../types/user"
 
 export const initialState: CurrentUserState = {
     user: null,
     error: '',
-    fetching: false
+    fetching: false,
+    nav: {
+        sideBar: SIDEBAR_MENU_OPTION.MESSAGES
+    }
 }
 
 export const currentUserSlice = createSlice({
