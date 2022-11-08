@@ -3,4 +3,6 @@ export enum ICON_NAME {
     MESSAGE = 'Message',
     PHONE = 'PhoneIphoneIcon',
     MORE = 'MoreHorizIcon',
+    EMOJI_SMILE = 'EmojiEmotionsIcon',
+    SEND = 'SendToMobileIcon',
 }
