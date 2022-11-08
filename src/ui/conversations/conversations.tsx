@@ -12,7 +12,7 @@ export const Conversations = () => {
 const styles: StyleSheet = {
   conversations: {
     flex: 3,
-    backgroundColor: "white",
+    backgroundColor: "#F4F4F4",
     flexDirection: "column",
   },
   title: {
