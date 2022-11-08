@@ -22,10 +22,14 @@ export const ChatHeader = (props: Props) => {
 
   return (
     <div style={styles.chatHeader}>
-      <p>{userStatus}</p>
-      <h1 style={styles.recipientName}>{recipientName}</h1>
-      <Icon icon={ICON_NAME.PHONE} color="#686868" />
-      <Icon icon={ICON_NAME.MORE} color="#686868" />
+      <div style={styles.recipientInfo}>
+        <p style={styles.userStatus}>{userStatus}</p>
+        <h1 style={styles.recipientName}>{recipientName}</h1>
+      </div>
+      <div style={styles.userOptions}>
+        <Icon icon={ICON_NAME.PHONE} color="#686868" />
+        <Icon icon={ICON_NAME.MORE} color="#686868" />
+      </div>
     </div>
   );
 };
@@ -33,16 +37,35 @@ export const ChatHeader = (props: Props) => {
 const styles: StyleSheet = {
   chatHeader: {
     display: "flex",
-    flex: 1,
+    flex: 0,
     flexDirection: "row",
+    backgroundColor: "white",
+    alignItems: "center",
+    width: "100%",
+    paddingTop: 12,
+    paddingBottom: 14,
+    paddingLeft: 14,
+    paddingRight: 0,
+    borderBottom: "1px solid #bfbfbf",
+  },
+  recipientInfo: {
+    display: "flex",
+    flex: 3,
+    flexDirection: "column",
   },
   recipientName: {
     color: "#686868",
     fontSize: 24,
   },
-  userOption: {
-    width: 30,
-    height: 30,
+  userOptions: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  userStatus: {
     color: "#686868",
+    fontSize: 14,
+    fontWeight: 400,
+    margin: 0,
+    marginBottom: 4,
   },
 };

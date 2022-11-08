@@ -23,6 +23,8 @@ const styles: StyleSheet = {
     display: "flex",
     backgroundColor: "white",
     flexDirection: "column",
+    padding: 24,
+    alignItems: "center",
   },
   recipientName: {
     color: "#686868",
