@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "../../../types/style";
+import { StyleSheet } from "../../../../types/style";
 import Face2Icon from "@mui/icons-material/Face2";
 
 type Props = {

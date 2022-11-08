@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { HashLoader } from "react-spinners";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import {
   currentUserFetchingSelector,
   currentUserSelector,
-} from "./redux/selectors/currentUserSelector";
-import { getCurrentUser } from "./redux/thunks/getCurrentUser";
-import { StyleSheet } from "./types/style";
-import { ChatHistory } from "./ui/conversations/chat/chatHistory";
-import { Conversations } from "./ui/conversations/conversations";
-import { SideBar } from "./ui/side-bar/sideBar";
+} from "../redux/selectors/currentUserSelector";
+import { getCurrentUser } from "../redux/thunks/getCurrentUser";
+import { StyleSheet } from "../types/style";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Layout } from "./layout/Layout";
+import { Messages } from "./messages/messages";
 
 export const AppRoot = () => {
   const dispatch = useAppDispatch();
@@ -40,21 +40,17 @@ export const AppRoot = () => {
   }
 
   return (
-    <div style={styles.appRoot}>
-      <SideBar />
-      <Conversations />
-      <ChatHistory recipientName="Brandon R." />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Messages />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
 const styles: StyleSheet = {
-  appRoot: {
-    display: "flex",
-    flex: 1,
-    backgroundColor: "white",
-    flexDirection: "row",
-  },
   loadingAppRoot: {
     display: "flex",
     flex: 1,

@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet } from "../../../types/style";
-import { USER_STATUS } from "../../../types/user";
+import { StyleSheet } from "../../../../types/style";
+import { USER_STATUS } from "../../../../types/user";
 import { ChatBox } from "./box/chatBox";
 import { ChatHeader } from "./header/chatHeader";
 

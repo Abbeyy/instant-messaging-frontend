@@ -1,9 +1,9 @@
-import { useAppSelector } from "../../hooks";
-import { currentUserSelector } from "../../redux/selectors/currentUserSelector";
+import { useAppSelector } from "../../../hooks";
+import { currentUserSelector } from "../../../redux/selectors/currentUserSelector";
 import React from "react";
-import { StyleSheet } from "../../types/style";
-import { ICON_NAME } from "../../types/ui/icon";
-import { Icon } from "../shared/icon";
+import { StyleSheet } from "../../../types/style";
+import { ICON_NAME } from "../../../types/ui/icon";
+import { Icon } from "../../shared/icon";
 
 export const SideBar = () => {
   const currentUser = useAppSelector(currentUserSelector);

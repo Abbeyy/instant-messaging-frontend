@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "../../types/style";
+import { StyleSheet } from "../../../types/style";
 import { ChatBubble } from "./chat/chatBubble";
 
 export const Conversations = () => {
@@ -27,5 +27,3 @@ const styles: StyleSheet = {
     marginBottom: 12,
   },
 };
-
-// "#20c994"

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet } from "../../../../types/style";
-import { ICON_NAME } from "../../../../types/ui/icon";
-import { USER_STATUS } from "../../../../types/user";
-import { Icon } from "../../../shared/icon";
+import { StyleSheet } from "../../../../../types/style";
+import { ICON_NAME } from "../../../../../types/ui/icon";
+import { USER_STATUS } from "../../../../../types/user";
+import { Icon } from "../../../../shared/icon";
 
 type Props = {
   recipientName: string;

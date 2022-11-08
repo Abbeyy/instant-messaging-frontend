@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet } from "../../../../types/style";
-import { ICON_NAME } from "../../../../types/ui/icon";
-import { Icon } from "../../../shared/icon";
+import { StyleSheet } from "../../../../../types/style";
+import { ICON_NAME } from "../../../../../types/ui/icon";
+import { Icon } from "../../../../shared/icon";
 
 export const ChatBox = () => (
   <div style={styles.chatBox}>
