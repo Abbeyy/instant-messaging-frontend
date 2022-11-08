@@ -80,15 +80,21 @@ export const Icon = (props: Props) => {
 
   return (
     <button style={styles.iconRow} onClick={handleOnPress}>
-      {active ? <BlurOnIcon style={{ color: "white" }} /> : null}
+      {active ? <BlurOnIcon style={styles.active} /> : null}
       {iconButton}
     </button>
   );
 };
 
 const styles: StyleSheet = {
+  active: {
+    color: "white",
+    position: "absolute",
+    left: 20,
+  },
   iconRow: {
     flex: 0,
     display: "flex",
+    alignItems: "center",
   },
 };
