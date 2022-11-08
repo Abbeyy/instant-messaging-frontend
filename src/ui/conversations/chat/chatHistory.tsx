@@ -1,10 +1,18 @@
 import React from "react";
 import { StyleSheet } from "../../../types/style";
+import { USER_STATUS } from "../../../types/user";
+import { ChatHeader } from "./header/chatHeader";
 
-export const Chat = () => {
+type Props = {
+  recipientName: string;
+};
+
+export const ChatHistory = (props: Props) => {
+  const { recipientName } = props;
+
   return (
     <div style={styles.chat}>
-      <h1 style={styles.recipientName}>Brandon</h1>
+      <ChatHeader recipientName={recipientName} status={USER_STATUS.ONLINE} />
     </div>
   );
 };

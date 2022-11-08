@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ClimbingBoxLoader, HashLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import {
   currentUserFetchingSelector,
@@ -7,7 +7,7 @@ import {
 } from "./redux/selectors/currentUserSelector";
 import { getCurrentUser } from "./redux/thunks/getCurrentUser";
 import { StyleSheet } from "./types/style";
-import { Chat } from "./ui/conversations/chat/chat";
+import { ChatHistory } from "./ui/conversations/chat/chatHistory";
 import { Conversations } from "./ui/conversations/conversations";
 import { SideBar } from "./ui/side-bar/sideBar";
 
@@ -43,7 +43,7 @@ export const AppRoot = () => {
     <div style={styles.appRoot}>
       <SideBar />
       <Conversations />
-      <Chat />
+      <ChatHistory recipientName="Brandon R." />
     </div>
   );
 };

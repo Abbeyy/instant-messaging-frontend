@@ -12,3 +12,8 @@ export type ContactUser = {
     _id: string
     userId: string
 }
+
+export enum USER_STATUS {
+    ONLINE = 'online',
+    OFFLINE = 'offline'
+}
