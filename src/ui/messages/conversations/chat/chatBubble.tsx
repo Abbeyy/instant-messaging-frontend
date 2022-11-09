@@ -43,6 +43,7 @@ const styles: StyleSheet = {
     paddingTop: 8,
     paddingBottom: 8,
     alignItems: "center",
+    textAlign: "start",
     marginTop: 8,
     marginBottom: 8,
     boxShadow: "1px 3px 1px #c2c2c2",
@@ -50,13 +51,13 @@ const styles: StyleSheet = {
   recipientName: {
     fontSize: 16,
     fontWeight: 600,
-    flex: 6,
     overflow: "hidden",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
   },
   person: {
-    flex: 1.5,
+    marginLeft: 8,
+    marginRight: 8,
     width: 20,
     height: 20,
   },
