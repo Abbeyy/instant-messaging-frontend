@@ -77,7 +77,6 @@ export const Icon = (props: Props) => {
   }
 
   const handleOnPress = () => {
-    console.log("Clicked!");
     if (onClick) {
       onClick();
     }

@@ -5,13 +5,10 @@ export type User = {
     firstName: string
     surname: string
     displayName: string | undefined
-    contacts: ContactUser[] | undefined
+    contacts: UserId[] | undefined
 }
 
-export type ContactUser = {
-    _id: string
-    userId: string
-}
+type UserId = string
 
 export enum USER_STATUS {
     ONLINE = 'online',

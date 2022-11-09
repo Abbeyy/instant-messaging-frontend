@@ -1,3 +1,7 @@
 import { MessageHistory } from "../../messageHistory";
 
-export type MessageHistoryState = MessageHistory[]
+export type MessageHistoryState = {
+    messageHistory: MessageHistory[],
+    error: string,
+    fetching: boolean
+}

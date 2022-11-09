@@ -2,31 +2,28 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { MessageHistory } from "../../types/messageHistory"
 import { MessageHistoryState } from "../../types/redux/reducers/messageHistoryState"
 
-export const initialState: MessageHistoryState = []
+export const initialState: MessageHistoryState = {
+    messageHistory: [],
+    error: '',
+    fetching: false,
+}
 
 export const messageHistorySlice = createSlice({
     name: 'messageHistory',
     initialState,
     reducers: {
-        appendMessages: (state, action: PayloadAction<MessageHistory[]>) => {
-            const newMessages = action.payload
-            const existingMessageIds = state.map((messageHistory) => messageHistory.timeStamp)
-
-            newMessages.forEach((newMessageHistory) => {
-                if (!existingMessageIds.includes(newMessageHistory.timeStamp)) {
-                    state.push(newMessageHistory)
-                }
-            })
+        setMessageHistories: (state, action: PayloadAction<MessageHistory[]>) => {
+            state.messageHistory = action.payload
         },
-        removeMessages: (state, action: PayloadAction<MessageHistory[]>) => {
-            const markedMessageIds = action.payload.map((messageHistory) => messageHistory.timeStamp)
-            const allMessages = state
-
-            state = allMessages.filter(
-                (newMessageHistory) => !markedMessageIds.includes(newMessageHistory.timeStamp),
-            )
+        setMessageHistoryError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        },
+        setMessageHistoryFetching: (state, action: PayloadAction<boolean>) => {
+            state.fetching = action.payload
         },
     },
 })
 
-export const { appendMessages, removeMessages } = messageHistorySlice.actions
+export const { setMessageHistories, setMessageHistoryError, setMessageHistoryFetching } = messageHistorySlice.actions
+
+export default messageHistorySlice.reducer

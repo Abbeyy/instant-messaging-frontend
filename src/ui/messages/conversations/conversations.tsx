@@ -1,13 +1,25 @@
 import React from "react";
+import { useAppSelector } from "../../../hooks";
+import { currentUserSelector } from "../../../redux/selectors/currentUserSelector";
+import { messageHistoryRecipientsBySenderIdSelector } from "../../../redux/selectors/messageHistorySelector";
 import { StyleSheet } from "../../../types/style";
 import { ChatBubble } from "./chat/chatBubble";
 
 export const Conversations = () => {
+  const currentUser = useAppSelector(currentUserSelector);
+
+  const recipientsOfSender = useAppSelector(
+    messageHistoryRecipientsBySenderIdSelector(currentUser._id)
+  );
+
   return (
     <div style={styles.conversations}>
       <h1 style={styles.title}>Conversations</h1>
-      <ChatBubble recipientName="Brandon R." />
-      <ChatBubble recipientName="Jenny Walsh-Baxter" />
+      {recipientsOfSender.map((recipient) => (
+        <ChatBubble
+          recipientName={`${recipient.firstName} ${recipient.surname}`}
+        />
+      ))}
     </div>
   );
 };

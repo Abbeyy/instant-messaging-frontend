@@ -5,23 +5,25 @@ import {
   currentUserFetchingSelector,
   currentUserSelector,
 } from "../redux/selectors/currentUserSelector";
-import { getCurrentUser } from "../redux/thunks/getCurrentUser";
 import { StyleSheet } from "../types/style";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import { Messages } from "./messages/messages";
 import { Home } from "./home/home";
+import { onAppLoad } from "../redux/thunks/onAppLoad";
+import { appIsLoadingSelector } from "../redux/selectors/appDataSelector";
 
 export const AppRoot = () => {
   const dispatch = useAppDispatch();
 
+  const isAppLoading = useAppSelector(appIsLoadingSelector);
   const fetchingUser = useAppSelector(currentUserFetchingSelector);
   const currentUser = useAppSelector(currentUserSelector);
 
-  const loading = fetchingUser || !currentUser;
-
+  const loading = fetchingUser || !currentUser || isAppLoading;
+  // on load
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(onAppLoad());
   }, []);
 
   if (loading) {
