@@ -10,6 +10,7 @@ import { StyleSheet } from "../types/style";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import { Messages } from "./messages/messages";
+import { Home } from "./home/home";
 
 export const AppRoot = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +45,7 @@ export const AppRoot = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="messages" element={<Messages />} />
+          <Route path="home" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>

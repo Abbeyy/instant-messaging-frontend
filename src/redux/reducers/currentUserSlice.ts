@@ -24,13 +24,17 @@ export const currentUserSlice = createSlice({
         setCurrentUserFetching: (state, action: PayloadAction<boolean>) => {
             state.fetching = action.payload
         },
+        setNavigationSidebar: (state, action: PayloadAction<SIDEBAR_MENU_OPTION>) => {
+            state.nav.sideBar = action.payload
+        },
     },
 })
 
 export const { 
     setCurrentUser,
     setCurrentUserError,
-    setCurrentUserFetching
+    setCurrentUserFetching,
+    setNavigationSidebar
  } = currentUserSlice.actions
 
  export default currentUserSlice.reducer

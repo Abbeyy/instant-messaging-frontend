@@ -76,7 +76,12 @@ export const Icon = (props: Props) => {
       break;
   }
 
-  const handleOnPress = () => onClick();
+  const handleOnPress = () => {
+    console.log("Clicked!");
+    if (onClick) {
+      onClick();
+    }
+  };
 
   return (
     <button style={styles.iconRow} onClick={handleOnPress}>
