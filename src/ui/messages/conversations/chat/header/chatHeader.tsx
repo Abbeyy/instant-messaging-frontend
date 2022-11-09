@@ -53,8 +53,9 @@ const styles: StyleSheet = {
     flexDirection: "column",
   },
   recipientName: {
-    color: "#686868",
+    color: "#20c994",
     fontSize: 24,
+    fontWeight: 800,
   },
   userOptions: {
     display: "flex",

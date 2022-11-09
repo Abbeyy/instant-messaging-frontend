@@ -5,15 +5,31 @@ import Face2Icon from "@mui/icons-material/Face2";
 type Props = {
   recipientName: string;
   onClick: () => void;
+  active?: boolean;
 };
 
 export const ChatBubble = (props: Props) => {
-  const { recipientName, onClick } = props;
+  const { recipientName, onClick, active = false } = props;
+
+  const primaryColor = !active ? "#686868" : "white";
+  const secondaryColor = !active ? "white" : "#20c994";
+
+  const iconStyle = { ...styles.person, color: primaryColor };
+
+  const chatBubbleStyle = {
+    ...styles.chatBubble,
+    backgroundColor: secondaryColor,
+  };
+
+  const recipientNameStyle = {
+    ...styles.recipientName,
+    color: primaryColor,
+  };
 
   return (
-    <button style={styles.chatBubble} onClick={onClick}>
-      <Face2Icon style={styles.person} />
-      <h1 style={styles.recipientName}>{recipientName}</h1>
+    <button style={chatBubbleStyle} onClick={onClick}>
+      <Face2Icon style={iconStyle} />
+      <h1 style={recipientNameStyle}>{recipientName}</h1>
     </button>
   );
 };
@@ -22,7 +38,6 @@ const styles: StyleSheet = {
   chatBubble: {
     display: "flex",
     flex: 0,
-    backgroundColor: "white",
     flexDirection: "row",
     borderRadius: 8,
     paddingTop: 8,
@@ -33,9 +48,8 @@ const styles: StyleSheet = {
     boxShadow: "1px 3px 1px #c2c2c2",
   },
   recipientName: {
-    color: "#686868",
     fontSize: 16,
-    fontWeight: 500,
+    fontWeight: 600,
     flex: 6,
     overflow: "hidden",
     whiteSpace: "nowrap",
@@ -45,6 +59,5 @@ const styles: StyleSheet = {
     flex: 1.5,
     width: 20,
     height: 20,
-    color: "#686868",
   },
 };

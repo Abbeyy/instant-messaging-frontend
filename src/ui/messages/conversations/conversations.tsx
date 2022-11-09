@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { setMessagesChatRecipientId } from "../../../redux/reducers/appDataSlice";
+import { messagesChatRecipientUserIdSelector } from "../../../redux/selectors/appDataSelector";
 import { currentUserSelector } from "../../../redux/selectors/currentUserSelector";
 import { recipientsBySenderIdSelector } from "../../../redux/selectors/messageHistorySelector";
 import { StyleSheet } from "../../../types/style";
@@ -10,6 +11,7 @@ export const Conversations = () => {
   const dispatch = useAppDispatch();
 
   const currentUser = useAppSelector(currentUserSelector);
+  const chosenRecipientId = useAppSelector(messagesChatRecipientUserIdSelector);
 
   const recipientsOfSender = useAppSelector(
     recipientsBySenderIdSelector(currentUser._id)
@@ -26,6 +28,7 @@ export const Conversations = () => {
           key={recipient._id}
           recipientName={`${recipient.firstName} ${recipient.surname}`}
           onClick={() => handleOnBubbleClick(recipient._id)}
+          active={recipient._id === chosenRecipientId}
         />
       ))}
     </div>
