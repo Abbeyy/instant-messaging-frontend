@@ -19,7 +19,7 @@ export const Messages = () => {
   return (
     <div style={styles.messages}>
       <Conversations />
-      <ChatHistory recipientName="Brandon R." />
+      <ChatHistory />
     </div>
   );
 };

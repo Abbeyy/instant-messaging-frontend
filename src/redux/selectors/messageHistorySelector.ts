@@ -9,12 +9,14 @@ export const messageHistorySelector = ({ messageHistory }: RootState) => message
 // By Sender
 export const messageHistoryBySenderSelector = (senderId: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId))
 
-export const messageHistoryRecipientsBySenderIdSelector = (senderId: string) => createSelector(messageHistorySelector, usersSelector, (allMessageHistories: MessageHistory[], allUsers: User[]) => {
+export const recipientsBySenderIdSelector = (senderId: string) => createSelector(messageHistorySelector, usersSelector, (allMessageHistories: MessageHistory[], allUsers: User[]) => {
     const historiesBySender = allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId)
     const recipientIds = historiesBySender.map((messageHistory) => messageHistory.recipient)
 
     return allUsers.filter((user) => recipientIds.includes(user._id))
 })
+
+export const recentRecipientBySenderIdSelector = (senderId: string) => createSelector(recipientsBySenderIdSelector(senderId), (recentRecipients) => recentRecipients.length ? recentRecipients[0] : undefined)
 
 export const messagesBySenderSelector = (senderId: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId).map((messageHistory) => messageHistory.messageList))
 
