@@ -1,6 +1,7 @@
+import { SIDEBAR_MENU_OPTION } from "../../types/redux/reducers/appDataState"
 import { AppThunk } from "../../types/redux/store"
-import { setNavigationSidebar as setNavSideBar } from "../reducers/currentUserSlice";
-import { SIDEBAR_MENU_OPTION } from "../../types/redux/reducers/currentUserState";
+
+import { setNavigationSidebar as setNavSideBar } from "../reducers/appDataSlice"
 
 export const setNavigationSideBar =
     (sideBarOption: SIDEBAR_MENU_OPTION): AppThunk =>

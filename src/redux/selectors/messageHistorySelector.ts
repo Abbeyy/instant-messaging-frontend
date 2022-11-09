@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit'
 import { MessageHistory } from '../../types/messageHistory'
 import type { RootState } from '../../types/redux/store'
 import { User } from '../../types/user'
-import { usersSelector } from './UsersSelector'
+import { usersSelector } from './usersSelector'
 
 export const messageHistorySelector = ({ messageHistory }: RootState) => messageHistory.messageHistory
 

@@ -1,16 +1,22 @@
 import React from "react";
-import { useAppSelector } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { setMessagesChatRecipientId } from "../../../redux/reducers/appDataSlice";
 import { currentUserSelector } from "../../../redux/selectors/currentUserSelector";
 import { recipientsBySenderIdSelector } from "../../../redux/selectors/messageHistorySelector";
 import { StyleSheet } from "../../../types/style";
 import { ChatBubble } from "./chat/chatBubble";
 
 export const Conversations = () => {
+  const dispatch = useAppDispatch();
+
   const currentUser = useAppSelector(currentUserSelector);
 
   const recipientsOfSender = useAppSelector(
     recipientsBySenderIdSelector(currentUser._id)
   );
+
+  const handleOnBubbleClick = (id: string) =>
+    dispatch(setMessagesChatRecipientId(id));
 
   return (
     <div style={styles.conversations}>
@@ -19,6 +25,7 @@ export const Conversations = () => {
         <ChatBubble
           key={recipient._id}
           recipientName={`${recipient.firstName} ${recipient.surname}`}
+          onClick={() => handleOnBubbleClick(recipient._id)}
         />
       ))}
     </div>

@@ -4,16 +4,17 @@ import Face2Icon from "@mui/icons-material/Face2";
 
 type Props = {
   recipientName: string;
+  onClick: () => void;
 };
 
 export const ChatBubble = (props: Props) => {
-  const { recipientName } = props;
+  const { recipientName, onClick } = props;
 
   return (
-    <div style={styles.chatBubble}>
+    <button style={styles.chatBubble} onClick={onClick}>
       <Face2Icon style={styles.person} />
       <h1 style={styles.recipientName}>{recipientName}</h1>
-    </div>
+    </button>
   );
 };
 

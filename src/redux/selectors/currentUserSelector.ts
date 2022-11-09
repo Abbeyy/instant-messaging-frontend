@@ -5,5 +5,3 @@ export const currentUserSelector = ({ currentUser }: RootState) => currentUser.u
 export const currentUserErrorSelector = ({ currentUser }: RootState) => currentUser.error
 
 export const currentUserFetchingSelector = ({ currentUser }: RootState) => currentUser.fetching
-
-export const currentNavigationSelector = ({ currentUser }: RootState) => currentUser.nav.sideBar

@@ -1,15 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import {
-  currentNavigationSelector,
-  currentUserSelector,
-} from "../../../redux/selectors/currentUserSelector";
+import { currentUserSelector } from "../../../redux/selectors/currentUserSelector";
 import React, { useEffect, useState } from "react";
 import { StyleSheet } from "../../../types/style";
 import { ICON_NAME } from "../../../types/ui/icon";
 import { Icon } from "../../shared/icon";
-import { SIDEBAR_MENU_OPTION } from "../../../types/redux/reducers/currentUserState";
-import { setNavigationSideBar } from "../../../redux/thunks/setNavigationSideBar";
 import { useNavigate } from "react-router-dom";
+import { SIDEBAR_MENU_OPTION } from "../../../types/redux/reducers/appDataState";
+import { setNavigationSideBar } from "../../../redux/thunks/setNavigationSideBar";
+import { sidebarNavigationSelector } from "../../../redux/selectors/appDataSelector";
 
 export const SideBar = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +15,7 @@ export const SideBar = () => {
   const navigate = useNavigate();
 
   const currentUser = useAppSelector(currentUserSelector);
-  const currentNavigation = useAppSelector(currentNavigationSelector);
+  const currentNavigation = useAppSelector(sidebarNavigationSelector);
 
   const [prevNavigation, setPrevNavigation] = useState<
     SIDEBAR_MENU_OPTION | undefined

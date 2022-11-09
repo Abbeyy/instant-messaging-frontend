@@ -1,28 +1,25 @@
 import React from "react";
 import { useAppSelector } from "../../../../hooks";
-import { currentUserSelector } from "../../../../redux/selectors/currentUserSelector";
-import { recentRecipientBySenderIdSelector } from "../../../../redux/selectors/messageHistorySelector";
+import { messagesChatRecipientUserIdSelector } from "../../../../redux/selectors/appDataSelector";
+import { userByIdSelector } from "../../../../redux/selectors/usersSelector";
 import { StyleSheet } from "../../../../types/style";
 import { USER_STATUS } from "../../../../types/user";
 import { ChatBox } from "./box/chatBox";
 import { ChatHeader } from "./header/chatHeader";
 
 export const ChatHistory = () => {
-  const currentUser = useAppSelector(currentUserSelector);
+  const chosenRecipientId = useAppSelector(messagesChatRecipientUserIdSelector);
+  const recipient = useAppSelector(userByIdSelector(chosenRecipientId));
 
-  const recentRecipientOfSender = useAppSelector(
-    recentRecipientBySenderIdSelector(currentUser._id)
-  );
-
-  if (!recentRecipientOfSender) {
+  if (!recipient) {
     return (
       <div style={styles.chat}>
-        <p>You have no recent recipients to chat with!</p>
+        <p>Select a conversation to see it here in detail</p>
       </div>
     );
   }
 
-  const name = `${recentRecipientOfSender.firstName} ${recentRecipientOfSender.surname}`;
+  const name = `${recipient.firstName} ${recipient.surname}`;
 
   return (
     <div style={styles.chat}>
