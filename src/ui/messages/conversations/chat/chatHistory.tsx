@@ -6,6 +6,7 @@ import { currentUserSelector } from "../../../../redux/selectors/currentUserSele
 import { StyleSheet } from "../../../../types/style";
 import { USER_STATUS } from "../../../../types/user";
 import { ChatBox } from "./box/chatBox";
+import { ChatFallback } from "./error/chatFallback";
 import { ChatHeader } from "./header/chatHeader";
 
 export const ChatHistory = () => {
@@ -16,11 +17,7 @@ export const ChatHistory = () => {
   );
 
   if (!recipients.length) {
-    return (
-      <div style={styles.chat}>
-        <p>Select a conversation to see it here in detail</p>
-      </div>
-    );
+    return <ChatFallback />;
   }
 
   const title =
@@ -45,9 +42,5 @@ const styles: StyleSheet = {
     padding: 24,
     alignItems: "center",
     justifyContent: "space-between",
-  },
-  recipientName: {
-    color: "#686868",
-    fontSize: 24,
   },
 };
