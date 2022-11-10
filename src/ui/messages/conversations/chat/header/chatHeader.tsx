@@ -5,12 +5,12 @@ import { USER_STATUS } from "../../../../../types/user";
 import { Icon } from "../../../../shared/icon";
 
 type Props = {
-  recipientName: string;
+  title: string;
   status: USER_STATUS;
 };
 
 export const ChatHeader = (props: Props) => {
-  const { recipientName, status } = props;
+  const { title, status } = props;
 
   let userStatus = "";
   if (status === USER_STATUS.ONLINE) {
@@ -24,7 +24,7 @@ export const ChatHeader = (props: Props) => {
     <div style={styles.chatHeader}>
       <div style={styles.recipientInfo}>
         <p style={styles.userStatus}>{userStatus}</p>
-        <h1 style={styles.recipientName}>{recipientName}</h1>
+        <h1 style={styles.title}>{title}</h1>
       </div>
       <div style={styles.userOptions}>
         <Icon icon={ICON_NAME.PHONE} color="#686868" />
@@ -52,7 +52,7 @@ const styles: StyleSheet = {
     flex: 3,
     flexDirection: "column",
   },
-  recipientName: {
+  title: {
     color: "#20c994",
     fontSize: 24,
     fontWeight: 800,

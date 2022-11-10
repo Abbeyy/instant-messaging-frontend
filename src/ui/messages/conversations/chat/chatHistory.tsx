@@ -1,17 +1,21 @@
 import React from "react";
 import { useAppSelector } from "../../../../hooks";
-import { messagesChatRecipientUserIdSelector } from "../../../../redux/selectors/appDataSelector";
-import { userByIdSelector } from "../../../../redux/selectors/usersSelector";
+import { userRecipientsOfChatSelector } from "../../../../redux/selectors";
+import { messagesChatIdSelector } from "../../../../redux/selectors/appDataSelector";
+import { currentUserSelector } from "../../../../redux/selectors/currentUserSelector";
 import { StyleSheet } from "../../../../types/style";
 import { USER_STATUS } from "../../../../types/user";
 import { ChatBox } from "./box/chatBox";
 import { ChatHeader } from "./header/chatHeader";
 
 export const ChatHistory = () => {
-  const chosenRecipientId = useAppSelector(messagesChatRecipientUserIdSelector);
-  const recipient = useAppSelector(userByIdSelector(chosenRecipientId));
+  const currentUser = useAppSelector(currentUserSelector);
+  const chosenChatId = useAppSelector(messagesChatIdSelector);
+  const recipients = useAppSelector(
+    userRecipientsOfChatSelector(chosenChatId, currentUser._id)
+  );
 
-  if (!recipient) {
+  if (!recipients.length) {
     return (
       <div style={styles.chat}>
         <p>Select a conversation to see it here in detail</p>
@@ -19,11 +23,14 @@ export const ChatHistory = () => {
     );
   }
 
-  const name = `${recipient.firstName} ${recipient.surname}`;
+  const title =
+    recipients.length === 1
+      ? `${recipients[0].firstName} ${recipients[0].surname}`
+      : recipients.map((recipient) => `${recipient.firstName}`).join(", ");
 
   return (
     <div style={styles.chat}>
-      <ChatHeader recipientName={name} status={USER_STATUS.ONLINE} />
+      <ChatHeader title={title} status={USER_STATUS.ONLINE} />
       <ChatBox />
     </div>
   );

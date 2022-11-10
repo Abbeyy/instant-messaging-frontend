@@ -6,19 +6,21 @@ import { usersSelector } from './usersSelector'
 
 export const messageHistorySelector = ({ messageHistory }: RootState) => messageHistory.messageHistory
 
-// By Sender
-export const messageHistoryBySenderSelector = (senderId: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId))
+export const messageHistoryByUserIdSelector = (id: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.parties.includes(id)))
 
-export const recipientsBySenderIdSelector = (senderId: string) => createSelector(messageHistorySelector, usersSelector, (allMessageHistories: MessageHistory[], allUsers: User[]) => {
-    const historiesBySender = allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId)
-    const recipientIds = historiesBySender.map((messageHistory) => messageHistory.recipient)
+export const messageHistoryByChatIdSelector = (id: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.find((messageHistory) => messageHistory._id === id))
 
-    return allUsers.filter((user) => recipientIds.includes(user._id))
+export const recipientPartyGroupsOfUserIdSelector = (id: string) => createSelector(messageHistorySelector, usersSelector, (allMessageHistories: MessageHistory[], allUsers: User[]) => {
+    const historiesBySender = allMessageHistories.filter((messageHistory) => messageHistory.parties?.includes(id))
+    const allRecipientIds = historiesBySender.map((messageHistory) => messageHistory.parties?.filter((party) => party !== id))
+
+    const recipientUsers: User[][] = []
+    allRecipientIds.forEach((recipientsIds) => {
+        const users = recipientsIds.map((id) => allUsers.find((user) => user._id === id))
+        recipientUsers.push(users)
+    })
+
+    return recipientUsers
 })
 
-export const recentRecipientBySenderIdSelector = (senderId: string) => createSelector(recipientsBySenderIdSelector(senderId), (recentRecipients) => recentRecipients.length ? recentRecipients[0] : undefined)
-
-export const messagesBySenderSelector = (senderId: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.sender === senderId).map((messageHistory) => messageHistory.messageList))
-
-// By Recipient
-export const messageHistoryByRecipientSelector = (recipientId: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.recipient === recipientId))
+export const messagesByUserIdSelector = (id: string) => createSelector(messageHistorySelector, (allMessageHistories) => allMessageHistories.filter((messageHistory) => messageHistory.parties.includes(id)).map((messageHistory) => messageHistory.messageList))

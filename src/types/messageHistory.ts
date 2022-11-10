@@ -1,7 +1,6 @@
 export type MessageHistory = {
     _id: string
-    sender: UserId
-    recipient: UserId
+    parties: UserId[]
     messageList: MessageId[]
 }
 
@@ -13,4 +12,5 @@ export type Message = {
     _id: string
     messages: string[]
     timeStamp: Date
+    sender: UserId
 }

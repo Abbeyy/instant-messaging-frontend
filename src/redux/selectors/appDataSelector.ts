@@ -4,4 +4,4 @@ export const appIsLoadingSelector = ({ appData }: RootState) => appData.isLoadin
 
 export const sidebarNavigationSelector = ({ appData }: RootState) => appData.nav.sideBar
 
-export const messagesChatRecipientUserIdSelector = ({ appData }: RootState) => appData.nav.messages.chatRecipientId
+export const messagesChatIdSelector = ({ appData }: RootState) => appData.nav.messages.chatId

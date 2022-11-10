@@ -6,7 +6,7 @@ export const initialState: AppDataState = {
     nav: {
         sideBar: SIDEBAR_MENU_OPTION.MESSAGES,
         messages: {
-            chatRecipientId: ''
+            chatId: ''
         }
     }
 }
@@ -21,8 +21,8 @@ export const AppDataSlice = createSlice({
         setNavigationSidebar: (state, action: PayloadAction<SIDEBAR_MENU_OPTION>) => {
             state.nav.sideBar = action.payload
         },
-        setMessagesChatRecipientId: (state, action: PayloadAction<string>) => {
-            state.nav.messages.chatRecipientId = action.payload
+        setMessagesChatId: (state, action: PayloadAction<string>) => {
+            state.nav.messages.chatId = action.payload
         },
     },
 })
@@ -30,7 +30,7 @@ export const AppDataSlice = createSlice({
 export const { 
     setAppIsLoading,
     setNavigationSidebar,
-    setMessagesChatRecipientId
+    setMessagesChatId
  } = AppDataSlice.actions
 
  export default AppDataSlice.reducer

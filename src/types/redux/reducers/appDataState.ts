@@ -3,7 +3,7 @@ export type AppDataState = {
     nav: {
         sideBar: SIDEBAR_MENU_OPTION
         messages: {
-            chatRecipientId: string
+            chatId: string
         }
     }
 }
