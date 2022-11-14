@@ -20,5 +20,12 @@ export const ChatMessages = (props: Props) => {
 };
 
 const styles: StyleSheet = {
-  chatHistory: {},
+  chatHistory: {
+    display: "flex",
+    flex: 1,
+    width: "100%",
+    flexDirection: "column",
+    marginBottom: 20,
+    marginTop: 10,
+  },
 };

@@ -8,7 +8,7 @@ import { usersByIdsSelector } from "../../../../redux/selectors/usersSelector";
 import { setMessagesChatId } from "../../../../redux/reducers/appDataSlice";
 import { messagesChatIdSelector } from "../../../../redux/selectors/appDataSelector";
 
-import { getMessageListsByPartyIds } from "../../../../redux/thunks/messageList/getMessageListsByPartyIds";
+import { getMessageListsByIds } from "../../../../redux/thunks/messageList/getMessageListsByIds";
 
 type Props = {
   history: MessageHistory;
@@ -30,11 +30,20 @@ export const ChatBubble = (props: Props) => {
     usersByIdsSelector(recipientPartyIdsOfSender)
   );
 
+  useEffect(() => {
+    if (active) {
+      dispatch(getMessageListsByIds(history.messageList));
+    }
+  }, [active]);
+
+  const handleOnClick = () => dispatch(setMessagesChatId(history._id));
+
   const title =
     usersFromIds.length === 1
       ? `${usersFromIds[0].firstName} ${usersFromIds[0].surname}`
       : usersFromIds.map((user) => `${user.firstName}`).join(",");
 
+  //styles
   const primaryColor = !active ? "#686868" : "white";
   const secondaryColor = !active ? "white" : "#20c994";
 
@@ -49,14 +58,6 @@ export const ChatBubble = (props: Props) => {
     ...styles.recipientName,
     color: primaryColor,
   };
-
-  const handleOnClick = () => dispatch(setMessagesChatId(history._id));
-
-  useEffect(() => {
-    if (active) {
-      dispatch(getMessageListsByPartyIds(history.parties));
-    }
-  }, [active]);
 
   return (
     <button style={chatBubbleStyle} onClick={handleOnClick}>
