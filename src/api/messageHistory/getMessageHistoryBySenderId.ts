@@ -1,6 +1,6 @@
 import axios from "axios";
-import { MessageHistory } from "../types/messageHistory";
-import { BACKEND } from "./endpoints";
+import { MessageHistory } from "../../types/messageHistory";
+import { BACKEND } from "../endpoints";
 
 type Response = MessageHistory[]
 

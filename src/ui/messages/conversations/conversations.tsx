@@ -19,36 +19,6 @@ export const Conversations = () => {
       {messageHistoriesOfSender.map((history) => (
         <ChatBubble history={history} />
       ))}
-      {/* {usersFromIds.map((party) => {
-        if (party.length === 1) {
-          const recipient = party[0];
-          return (
-            <ChatBubble
-              key={recipient._id}
-              recipientName={`${recipient.firstName} ${recipient.surname}`}
-              onClick={() => handleOnBubbleClick(recipient._id)}
-              active={recipient._id === chosenRecipientId}
-            />
-          );
-        } else if (party.length > 1) {
-          const key = party.map((recipient) => recipient._id).join("+");
-          const name = party
-            .map((recipient) => `${recipient.firstName} ${recipient.surname}`)
-            .join(", ");
-          const active = party
-            .map((recipient) => recipient._id)
-            .some((recipientId) => recipientId === chosenRecipientId);
-
-          return (
-            <ChatBubble
-              key={key}
-              recipientName={name}
-              onClick={() => handleOnBubbleClick(recipient._id)}
-              active={active}
-            />
-          );
-        }
-      })} */}
     </div>
   );
 };

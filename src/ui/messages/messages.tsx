@@ -1,10 +1,10 @@
-import { ChatHistory } from "./conversations/chat/chatHistory";
+import { ChatHistory } from "./conversations/chat/history/chatHistory";
 import { Conversations } from "./conversations/conversations";
 import React, { useEffect } from "react";
 import { StyleSheet } from "../../types/style";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { currentUserSelector } from "../../redux/selectors/currentUserSelector";
-import { getMessageHistoryBySenderId } from "../../redux/thunks/getMessageHistory";
+import { getMessageHistoryBySenderId } from "../../redux/thunks/getMessageHistoryBySenderId";
 
 export const Messages = () => {
   const dispatch = useAppDispatch();

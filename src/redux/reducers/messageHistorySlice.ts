@@ -6,6 +6,12 @@ export const initialState: MessageHistoryState = {
     messageHistory: [],
     error: '',
     fetching: false,
+    appendingMessages: false,
+}
+
+type AppendMessages = {
+    chatId: string
+    messages: string[]
 }
 
 export const messageHistorySlice = createSlice({
@@ -21,9 +27,28 @@ export const messageHistorySlice = createSlice({
         setMessageHistoryFetching: (state, action: PayloadAction<boolean>) => {
             state.fetching = action.payload
         },
+        setMessageHistoryAppendingMessages: (state, action: PayloadAction<boolean>) => {
+            state.appendingMessages = action.payload
+        },
+        // appendMessagesToMessageList: (state, action: PayloadAction<AppendMessages>) => {
+        //     const { chatId, messages} = action.payload
+
+        //     const messageHistory = state.messageHistory.find((history) => history._id === chatId)
+        //     const idx = state.messageHistory.indexOf(messageHistory)
+
+        //     const updatedMessageHistory = {...messageHistory, messageList: [...messageHistory.messageList, ...messages]}
+
+        //     state.messageHistory[idx] = updatedMessageHistory
+        // },
     },
 })
 
-export const { setMessageHistories, setMessageHistoryError, setMessageHistoryFetching } = messageHistorySlice.actions
+export const { 
+    setMessageHistories, 
+    setMessageHistoryError, 
+    setMessageHistoryFetching, 
+    setMessageHistoryAppendingMessages,
+    // appendMessagesToMessageList
+ } = messageHistorySlice.actions
 
 export default messageHistorySlice.reducer

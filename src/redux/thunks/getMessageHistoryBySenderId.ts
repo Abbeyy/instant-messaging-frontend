@@ -1,7 +1,7 @@
 import { AppThunk } from "../../types/redux/store"
 import { setMessageHistories, setMessageHistoryError, setMessageHistoryFetching } from "../reducers/messageHistorySlice";
 
-import { getMessageHistoryBySenderId as getMessageHistory} from '../../api/getMessageHistoryBySenderId'
+import { getMessageHistoryBySenderId as getMessageHistory} from '../../api/messageHistory/getMessageHistoryBySenderId'
 
 export const getMessageHistoryBySenderId =
     (senderId: string): AppThunk =>
@@ -14,12 +14,12 @@ export const getMessageHistoryBySenderId =
                 dispatch(setMessageHistories(histories))
             } else {
                 console.warn(
-                    'getMessageHistoryBySenderId: No histories returned from backend',
+                    'getMessageHistory - BySenderId: No histories returned from backend',
                 )
                 dispatch(setMessageHistoryError('getMessageHistoryBySenderId: No histories returned from backend'))
             }
         } catch (err) {
-            console.warn(`getMessageHistoryBySenderId: API failed - ${err}`)
+            console.warn(`getMessageHistory - BySenderId: API failed - ${err}`)
             dispatch(setMessageHistoryError(err))
         } finally {
             dispatch(setMessageHistoryFetching(false))

@@ -1,13 +1,15 @@
 import React from "react";
-import { useAppSelector } from "../../../../hooks";
-import { userRecipientsOfChatSelector } from "../../../../redux/selectors";
-import { messagesChatIdSelector } from "../../../../redux/selectors/appDataSelector";
-import { currentUserSelector } from "../../../../redux/selectors/currentUserSelector";
-import { StyleSheet } from "../../../../types/style";
-import { USER_STATUS } from "../../../../types/user";
-import { ChatBox } from "./box/chatBox";
-import { ChatFallback } from "./error/chatFallback";
-import { ChatHeader } from "./header/chatHeader";
+import { useAppSelector } from "../../../../../hooks";
+import { userRecipientsOfChatSelector } from "../../../../../redux/selectors";
+import { messagesChatIdSelector } from "../../../../../redux/selectors/appDataSelector";
+import { currentUserSelector } from "../../../../../redux/selectors/currentUserSelector";
+import { messageListMessagesSelector } from "../../../../../redux/selectors/messageListSelector";
+import { StyleSheet } from "../../../../../types/style";
+import { USER_STATUS } from "../../../../../types/user";
+import { ChatBox } from "../box/chatBox";
+import { ChatFallback } from "../error/chatFallback";
+import { ChatHeader } from "../header/chatHeader";
+import { ChatMessages } from "./chatMessages";
 
 export const ChatHistory = () => {
   const currentUser = useAppSelector(currentUserSelector);
@@ -15,6 +17,8 @@ export const ChatHistory = () => {
   const recipients = useAppSelector(
     userRecipientsOfChatSelector(chosenChatId, currentUser._id)
   );
+
+  const messages = useAppSelector(messageListMessagesSelector);
 
   if (!recipients.length) {
     return <ChatFallback />;
@@ -28,6 +32,7 @@ export const ChatHistory = () => {
   return (
     <div style={styles.chat}>
       <ChatHeader title={title} status={USER_STATUS.ONLINE} />
+      <ChatMessages messages={messages} />
       <ChatBox />
     </div>
   );

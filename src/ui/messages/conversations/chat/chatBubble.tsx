@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "../../../../types/style";
 import Face2Icon from "@mui/icons-material/Face2";
 import { MessageHistory } from "../../../../types/messageHistory";
@@ -7,6 +7,8 @@ import { currentUserSelector } from "../../../../redux/selectors/currentUserSele
 import { usersByIdsSelector } from "../../../../redux/selectors/usersSelector";
 import { setMessagesChatId } from "../../../../redux/reducers/appDataSlice";
 import { messagesChatIdSelector } from "../../../../redux/selectors/appDataSelector";
+
+import { getMessageListsByPartyIds } from "../../../../redux/thunks/messageList/getMessageListsByPartyIds";
 
 type Props = {
   history: MessageHistory;
@@ -49,6 +51,12 @@ export const ChatBubble = (props: Props) => {
   };
 
   const handleOnClick = () => dispatch(setMessagesChatId(history._id));
+
+  useEffect(() => {
+    if (active) {
+      dispatch(getMessageListsByPartyIds(history.parties));
+    }
+  }, [active]);
 
   return (
     <button style={chatBubbleStyle} onClick={handleOnClick}>
