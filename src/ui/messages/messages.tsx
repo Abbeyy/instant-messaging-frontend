@@ -5,6 +5,7 @@ import { StyleSheet } from "../../types/style";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { currentUserSelector } from "../../redux/selectors/currentUserSelector";
 import { getMessageHistoryBySenderId } from "../../redux/thunks/getMessageHistoryBySenderId";
+import { SocketConsumer } from "../../socket/socketConsumer";
 
 export const Messages = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +21,8 @@ export const Messages = () => {
     <div style={styles.messages}>
       <Conversations />
       <ChatHistory />
+
+      <SocketConsumer />
     </div>
   );
 };
