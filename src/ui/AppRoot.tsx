@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HashLoader } from "react-spinners";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import {
@@ -12,8 +12,12 @@ import { Messages } from "./messages/messages";
 import { Home } from "./home/home";
 import { onAppLoad } from "../redux/thunks/onAppLoad";
 import { appIsLoadingSelector } from "../redux/selectors/appDataSelector";
+import socketIOClient from "socket.io-client";
+import { WEB_SOCKET_BACKEND } from "../api/endpoints";
 
 export const AppRoot = () => {
+  const webSocket = useRef(null);
+
   const dispatch = useAppDispatch();
 
   const isAppLoading = useAppSelector(appIsLoadingSelector);
@@ -24,6 +28,21 @@ export const AppRoot = () => {
   // on load
   useEffect(() => {
     dispatch(onAppLoad());
+
+    const socket = socketIOClient(WEB_SOCKET_BACKEND);
+
+    webSocket.current = socketIOClient(WEB_SOCKET_BACKEND);
+
+    console.log(socket);
+    console.log(WEB_SOCKET_BACKEND);
+
+    socket.emit("toServer");
+
+    socket.on("toAPI", () => {
+      console.log("All the way from the Server!");
+    });
+
+    return () => webSocket.current.close();
   }, []);
 
   if (loading) {
