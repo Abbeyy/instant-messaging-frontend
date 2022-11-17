@@ -4,5 +4,5 @@ export type MessageListState = {
     messageLists: Message[],
     error: string,
     fetching: boolean
-    appendingMessages: boolean
+    postingMessages: boolean
 }

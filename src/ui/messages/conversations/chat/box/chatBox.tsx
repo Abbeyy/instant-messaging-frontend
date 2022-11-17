@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks";
 import { messagesChatIdSelector } from "../../../../../redux/selectors/appDataSelector";
 import { currentUserSelector } from "../../../../../redux/selectors/currentUserSelector";
-import { appendMessages } from "../../../../../redux/thunks/appendMessages";
+import { postMessages } from "../../../../../redux/thunks/postMessages";
 import { StyleSheet } from "../../../../../types/style";
 import { ICON_NAME } from "../../../../../types/ui/icon";
 import { Icon } from "../../../../shared/icon";
@@ -26,7 +26,7 @@ export const ChatBox = () => {
 
   useEffect(() => {
     if (newMessages.length) {
-      dispatch(appendMessages(chatId, newMessages, currentUserId));
+      dispatch(postMessages(chatId, newMessages, currentUserId));
     }
   }, [newMessages]);
 

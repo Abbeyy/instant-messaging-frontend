@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { MessageHistory } from "../../types/messageHistory"
+import { Message, MessageHistory } from "../../types/messageHistory"
 import { MessageHistoryState } from "../../types/redux/reducers/messageHistoryState"
 
 export const initialState: MessageHistoryState = {
@@ -9,9 +9,9 @@ export const initialState: MessageHistoryState = {
     appendingMessages: false,
 }
 
-type AppendMessages = {
-    chatId: string
-    messages: string[]
+type AppendMessage = {
+    historyId: string
+    messages: Message[]
 }
 
 export const messageHistorySlice = createSlice({
@@ -30,16 +30,21 @@ export const messageHistorySlice = createSlice({
         setMessageHistoryAppendingMessages: (state, action: PayloadAction<boolean>) => {
             state.appendingMessages = action.payload
         },
-        // appendMessagesToMessageList: (state, action: PayloadAction<AppendMessages>) => {
-        //     const { chatId, messages} = action.payload
+        appendMessageListToHistory: (state, action: PayloadAction<AppendMessage>) => {
+            const {historyId, messages} = action.payload
 
-        //     const messageHistory = state.messageHistory.find((history) => history._id === chatId)
-        //     const idx = state.messageHistory.indexOf(messageHistory)
+            const history = state.messageHistory.find((currentHistory) => currentHistory._id === historyId)
+            const idx = state.messageHistory.indexOf(history)
 
-        //     const updatedMessageHistory = {...messageHistory, messageList: [...messageHistory.messageList, ...messages]}
+            if (history) {
+                const updatedHistory: MessageHistory = {
+                    ...history, 
+                    messageList: [...history.messageList, ...messages.map((messageList) => messageList._id)]
+                }
 
-        //     state.messageHistory[idx] = updatedMessageHistory
-        // },
+                state.messageHistory[idx] = updatedHistory
+            }
+        },
     },
 })
 
@@ -48,7 +53,7 @@ export const {
     setMessageHistoryError, 
     setMessageHistoryFetching, 
     setMessageHistoryAppendingMessages,
-    // appendMessagesToMessageList
+    appendMessageListToHistory,
  } = messageHistorySlice.actions
 
 export default messageHistorySlice.reducer

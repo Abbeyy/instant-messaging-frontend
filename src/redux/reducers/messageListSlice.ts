@@ -6,12 +6,7 @@ export const initialState: MessageListState = {
     messageLists: [],
     error: '',
     fetching: false,
-    appendingMessages: false,
-}
-
-type AppendMessages = {
-    chatId: string
-    messages: string[]
+    postingMessages: false,
 }
 
 export const messageListSlice = createSlice({
@@ -21,23 +16,27 @@ export const messageListSlice = createSlice({
         setMessageLists: (state, action: PayloadAction<Message[]>) => {
             state.messageLists = action.payload
         },
+        postingMessageList: (state, action: PayloadAction<Message>) => {
+            state.messageLists.push(action.payload)
+        },
         setMessageListError: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
         setMessageListFetching: (state, action: PayloadAction<boolean>) => {
             state.fetching = action.payload
         },
-        setMessageListFetchingAppending: (state, action: PayloadAction<boolean>) => {
-            state.appendingMessages = action.payload
+        setMessageListPosting: (state, action: PayloadAction<boolean>) => {
+            state.postingMessages = action.payload
         },
     },
 })
 
 export const { 
-    setMessageLists, 
+    setMessageLists,
+    postingMessageList,
     setMessageListError, 
     setMessageListFetching, 
-    setMessageListFetchingAppending,
+    setMessageListPosting,
  } = messageListSlice.actions
 
 export default messageListSlice.reducer
